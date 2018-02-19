@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="input-group">
+    <h4>Please enter keyword</h4>
+    <div class="form-group row">
+      <input type="text" class="form-control" placeholder="keyword" [(ngModel)]="keywordValue"/>
+    </div>
+  </div>
+  <button class="pull-right btn btn-success" (click)="searchAction()">Search</button>
+  <div *ngIf="noResult == true"><h4>No result found, please try again</h4></div>
+  <div *ngIf="noResult == false ">
+    <div class="row" *ngFor="let searchObj of searchResults">
+      <div class="card card-block">
+        <h4 class="card-title">{{ searchObj.artistName}}</h4>
+        <p class="card-title">{{ searchObj.collectionName }}</p>
+        <p class="card-title">{{ searchObj.kind }}</p>
+        <p class="card-text">{{searchObj.trackCensoredName}}</p>
+      </div>
+    </div>
+  </div>
+</div>
