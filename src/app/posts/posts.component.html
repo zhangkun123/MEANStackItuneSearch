@@ -1,20 +1,29 @@
 <div class="container">
-  <div class="input-group">
-    <h4>Please enter keyword</h4>
-    <div class="form-group row">
-      <input type="text" class="form-control" placeholder="keyword" [(ngModel)]="keywordValue"/>
-    </div>
-  </div>
-  <button class="pull-right btn btn-success" (click)="searchAction()">Search</button>
-  <div *ngIf="noResult == true"><h4>No result found, please try again</h4></div>
-  <div *ngIf="noResult == false ">
-    <div class="row" *ngFor="let searchObj of searchResults">
-      <div class="card card-block">
-        <h4 class="card-title">{{ searchObj.artistName}}</h4>
-        <p class="card-title">{{ searchObj.collectionName }}</p>
-        <p class="card-title">{{ searchObj.kind }}</p>
-        <p class="card-text">{{searchObj.trackCensoredName}}</p>
+  <div class="row">
+    <div class="col-6">
+      <h3>Please click button to see random questions</h3>
+      <button class="pull-left btn btn-success" (click)="randomAction()">Random</button>
+      <div class="row" *ngFor="let question of questions">
+        <div class="card card-block">
+          <h4 class="card-title">The question is {{ question.question}}</h4>
+          <p class="card-title">Answer is {{ question.answer }}</p>
+        </div>
       </div>
+    </div>
+
+    <div class="col-6">
+      <h3>Please click button to see categories</h3>
+      <button class="pull-right btn btn-success" (click)="displayCategoryAction()">displayCategory</button>
+      <table class="table">
+        <tr>
+          <td>title</td>
+          <td>clues_count</td>
+        </tr>
+       <tr *ngFor="let category of categories">
+        <td>{{ category.title}}</td>
+        <td>{{ category.clues_count }}</td>
+       </tr>
+      </table>
     </div>
   </div>
 </div>
